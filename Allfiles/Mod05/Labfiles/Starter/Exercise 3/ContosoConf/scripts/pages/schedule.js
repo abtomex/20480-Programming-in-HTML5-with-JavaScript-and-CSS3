@@ -3,26 +3,21 @@ const list = document.getElementById("schedule");
 const track1CheckBox = document.getElementById("show-track-1");
 const track2CheckBox = document.getElementById("show-track-2");
 
-const downloadSchedule = () => {
+const downloadSchedule = async () => {
 
-    const request = new XMLHttpRequest();
-    request.open("GET", "/schedule/list", true);
-    request.onreadystatechange = function () {
-        if (request.readyState === 4) {
-            try {
-                const response = JSON.parse(request.responseText);
-                if (request.status === 200) {
-                    schedules = response.schedule;
-                    displaySchedule();
-                } else {
-                    alert(response.message);
-                }
-            } catch (exception) {
-                alert("Schedule list not available.");
-            }
-        }
-    };
-    request.send();
+    // await response of fetch call
+    let response = await fetch("/schedule/list");
+
+    // checking response is ok
+    if (response.ok) {
+        // transform body to json
+        let data = await response.json();
+        schedules = data.schedule;
+        displaySchedule();
+    }
+    else
+        alert("Schedule list not available.");
+
 }
 
 const createSessionElement = (session) => {
@@ -61,24 +56,29 @@ const displaySchedule = () => {
     }
 }
 
-const saveStar = (sessionId, isStarred) => {
-    const request = new XMLHttpRequest();
-    request.open("POST", "/schedule/star/" + sessionId, true);
+const saveStar = async (sessionId, isStarred) => {
 
-    if (isStarred) {
-        request.onreadystatechange = function() {
-            if (request.readyState === 4 && request.status === 200) {
-                const response = JSON.parse(request.responseText);
-                if (response.starCount > 50) {
-                    alert("This session is very popular! Be sure to arrive early to get a seat.");
-                }
-            }
-        };
+    const headers = new Headers({
+        "Content-Type": "application/x-www-form-urlencoded"
+    })
+
+
+    const options = {
+        method: 'POST',
+        headers: headers,
+        body: "starred=" + isStarred
     }
 
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    const data = "starred=" + isStarred;
-    request.send(data);
+    const response = await fetch(`/schedule/star/${sessionId}`, options);
+
+    if (isStarred) {
+        if (response.ok) {
+            const data = await response.json();
+            if (data.starCount > 50)
+                alert("This session is very popular! Be sure to arrive early to get a seat.");
+        }
+    }
+
 }
 
 const handleListClick = (event) => {
