@@ -25,7 +25,7 @@ Estimated Time: **60 minutes**
 
 In this exercise, you will create the **Schedule** page that displays a list of sessions.
 
-First, you will use the HTML5 DOM to obtain a reference to the page’s schedule list element. Then you will implement a function that creates list items (one list item for each session). Information about the sessions is stored in a file in JSON format. You will implement a function that reads this data and adds the details about each session to the list element. Finally, you will run the application and view the **Schedule** page to verify that it correctly displays the list of sessions.
+First, you will use the HTML5 DOM to  a reference to the page’s schedule list element. Then you will implement a function that creates list items (one list item for each session). Information about the sessions is stored in a file in JSON format. You will implement a function that reads this data and adds the details about each session to the list element. Finally, you will run the application and view the **Schedule** page to verify that it correctly displays the list of sessions.
 
 #### Task 1: Review the existing code for the Schedule page
 
@@ -42,7 +42,8 @@ First, you will use the HTML5 DOM to obtain a reference to the page’s schedule
     ```
 3.	Notice that the **schedule.htm** page references the JavaScript code in the **scripts\pages\schedule.js** script file:
     ```html
-        <script src="/scripts/pages/schedule.js" type="text/javascript"></script>
+        
+    <script src="/scripts/pages/schedule.js" type="text/javascript"></script>
     ```
 4.	Review the **scripts\pages\schedule.js** script file. This file contains the details of each session held in JSON format. The data is held in the **schedule** array, and each object in the array has three properties that specify the session id, the session title, and the tracks to which the session belongs (a session may be part of more than one track):
     ```javascript
