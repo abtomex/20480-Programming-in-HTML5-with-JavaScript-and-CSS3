@@ -1,8 +1,11 @@
 ﻿CACHE MANIFEST
-
 # TODO: Add index, about, schedule and location pages
-
 /schedule/list
+
+/index.htm
+/about.htm
+/location.htm
+/schedule.htm
 
 /images/speakers/april-meyer.jpg
 /images/speakers/david-alexander.jpg
@@ -38,7 +41,6 @@
 /styles/pages/index.css
 /styles/pages/location.css
 /styles/pages/schedule.css
-
 
 NETWORK:
 *
