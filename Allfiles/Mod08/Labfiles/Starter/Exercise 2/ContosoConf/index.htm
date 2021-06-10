@@ -81,6 +81,14 @@
                     <h2>Video from last year</h2>
                     <!-- TODO: Add video tag here -->
                     <!-- Use this video source: http://ak.channel9.msdn.com/ch9/265b/9a76fccd-941e-4285-ad00-9ea200aa265b/MIX09KEY01_high_ch9.mp4 -->
+                    <video controls>
+                        <source src="http://ak.channel9.msdn.com/ch9/265b/9a76fccd-941e-4285-ad00-9ea200aa265b/MIX09KEY01_high_ch9.mp4" />
+                    </video>
+                    <div class="video-controls" style="display: none">
+                        <button class="video-play">Play</button>
+                        <button class="video-pause">Pause</button>
+                        <span class="video-time"></span>
+                    </div>
                 </section>
             </div>
         </section>
@@ -102,6 +110,6 @@
             </div>
         </footer>
 
-        <!--<script src="/scripts/pages/video.js" type="module"></script>-->
+        <script src="/scripts/pages/video.js" type="module"></script>
     </body>
 </html>
