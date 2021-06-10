@@ -130,6 +130,7 @@
     <Content Include="styles\pages\about.css" />
     <Content Include="styles\pages\index.css" />
     <Content Include="styles\site.css" />
+    <Content Include="styles\print.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
